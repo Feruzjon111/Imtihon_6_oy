@@ -21,31 +21,32 @@ def register(request):
 
 
 
-# def login_user(request):
-#     if request.method == 'POST':
-#         form = LoginForm(request, data=request.POST)
-#         if form.is_valid():
-#             user = form.get_user()
-#             login(request, user)
-#             return redirect("profile")
-#     else:
-#         form = LoginForm()
-#     return render(request, "registration/login.html", {'form': form})
-
-
 def login_user(request):
     if request.method == 'POST':
         form = LoginForm(request, data=request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
-            if user:
-                login(request, user)
-                return redirect("profile")
+            user = form.get_user()
+            login(request, user)
+            return redirect("profile")
     else:
         form = LoginForm()
     return render(request, "registration/login.html", {'form': form})
+
+
+# def login_user(request):
+#     if request.method == 'POST':
+#         form = LoginForm(request, data=request.POST)
+#         username = form.cleaned_data['username']
+#         password = form.cleaned_data['password']
+#         user = authenticate(request, username=username, password=password)
+#         if form.is_valid():
+#             if user is not None:
+#                 login(request, user)
+#                 request.session['first_name'] = user.first_name
+#                 return redirect("profile")
+#     else:
+#         form = LoginForm()
+#     return render(request, "registration/login.html", {'form': form})
 
 
 @login_required
