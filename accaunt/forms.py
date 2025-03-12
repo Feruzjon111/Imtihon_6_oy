@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
-# from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm
 from .models import CustomUser
 
 User = get_user_model()
+
+
+
 class UserCreateForm(forms.ModelForm):
     confirm_password = forms.CharField(widget=forms.PasswordInput, required=True)
 
@@ -69,19 +71,7 @@ class ProfileUpdateForm(forms.ModelForm):
             user.save()
         return user
 
-    def clean_password(self):
-        password = self.cleaned_data['password']
-        if not any(char.isdigit() for char in password):
-            raise forms.ValidationError('Parolda kamida 1 ta son bo\'lishi kerak!')
-        if not any(char.isalpha() for char in password):
-            raise forms.ValidationError('Parolda kamida 1 ta harf bo\'lishi kerak!')
-        if not any(char.islower() for char in password):
-            raise forms.ValidationError('Parolda kamida 1 ta kichkina harf bo\'lishi kerak!')
-        if not any(char.isupper() for char in password):
-            raise forms.ValidationError('Parolda kamida 1 ta katta harf bo\'lishi kerak!')
-        if len(password) < 8 or (len(password) > 20):
-            raise forms.ValidationError('Parol 8 tadan 20 tagacha simvol bo\'lishi kerak!')
-        return password
+
 
 
 

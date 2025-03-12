@@ -55,18 +55,36 @@
             padding: 60px 20px;
             text-align: center;
         }
+
+        /* KARTALAR UCHUN YANGI CSS */
         .product-card {
-            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             border-radius: 12px;
             overflow: hidden;
             background: white;
             padding: 15px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
         }
         .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
+        .product-card img {
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        .product-card .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .footer {
             background: rgba(0, 0, 0, 0.9);
             color: white;
@@ -79,7 +97,7 @@
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Welcome to {{ user.first_name }} </a>
+            <a class="navbar-brand" href="#">Welcome to {{ user.first_name }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -88,7 +106,7 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Bosh sahifa</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Bog‘lanish</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a></li>
                 </ul>
             </div>
         </div>
@@ -117,22 +135,22 @@
                 </div>
             {% endfor %}
         </div>
-            <nav>
-        <ul class="pagination justify-content-center">
-            {% if products.has_previous %}
-                <li class="page-item"><a class="page-link" href="?page=1">Boshiga</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Oldingi</a></li>
-            {% endif %}
 
-            <li class="page-item active"><span class="page-link">{{ products.number }} / {{ products.paginator.num_pages }}</span></li>
+        <nav>
+            <ul class="pagination justify-content-center">
+                {% if products.has_previous %}
+                    <li class="page-item"><a class="page-link" href="?page=1">Boshiga</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ products.previous_page_number }}">Oldingi</a></li>
+                {% endif %}
 
-            {% if products.has_next %}
-                <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Keyingi</a></li>
-                <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">Oxiriga</a></li>
-            {% endif %}
-        </ul>
-    </nav>
-</section>
+                <li class="page-item active"><span class="page-link">{{ products.number }} / {{ products.paginator.num_pages }}</span></li>
+
+                {% if products.has_next %}
+                    <li class="page-item"><a class="page-link" href="?page={{ products.next_page_number }}">Keyingi</a></li>
+                    <li class="page-item"><a class="page-link" href="?page={{ products.paginator.num_pages }}">Oxiriga</a></li>
+                {% endif %}
+            </ul>
+        </nav>
     </section>
 
     <footer class="footer">

@@ -136,9 +136,5 @@ AUTH_USER_MODEL = 'accaunt.CustomUser'
 LOGIN_URL = '/accaunt/login/'
 LOGIN_REDIRECT_URL = '/accaunt/profile/'
 
-AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-]
-
 
 
