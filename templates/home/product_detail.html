@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ product.name }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #121212, #1e1e1e);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px;
+            margin: 0;
+        }
+
+        .phone-detail {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: auto;
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(15px);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .phone-detail:hover {
+            transform: scale(1.02);
+        }
+
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 15px;
+            color: #ffcc00;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+            color: #dcdcdc;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            margin: 5px;
+        }
+
+        .back-btn {
+            background: #ffcc00;
+            color: #1e1e1e;
+        }
+
+        .back-btn:hover {
+            background: #e6b800;
+        }
+
+        .edit-btn {
+            background: #007bff;
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background: #0056b3;
+        }
+
+        .delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        .delete-btn:hover {
+            background: #b22222;
+        }
+
+        .comment-btn {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .comment-btn:hover {
+            background: #117a8b;
+        }
+
+        /* Izohlar bo‘limi */
+        .comment-section {
+            margin-top: 40px;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .comment-section h2 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .comment {
+            background: rgba(91, 16, 16, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            box-shadow: 0px 2px 5px rgba(255, 255, 255, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .comment:hover {
+            transform: scale(1.02);
+        }
+
+        .comment strong {
+            color: #ffcc00;
+            font-size: 16px;
+        }
+
+        .comment em {
+            font-size: 13px;
+            color: #aaaaaa;
+            display: block;
+            margin-top: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="phone-detail">
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }} {{ product.price }} so'm">
+        {% else %}
+            {% load static %}
+            <img src="{% static 'defaults/default.jpeg' %}" alt="No Image Available">
+        {% endif %}
+        <h1>{{ product.name }} {{ product.price }} so'm</h1>
+        <p><strong>Rangi:</strong> {{ product.color }}</p>
+        <p><strong>Narxi:</strong> {{ product.price }} so'm</p>
+        <p><strong>Tavsif:</strong> {{ product.description }}</p>
+
+        <div class="btn-container">
+            <a href="{% url 'products' %}" class="btn back-btn">⬅️ Ortga qaytish</a>
+            <a href="{% url 'comment' product.pk %}" class="btn comment-btn">💬 Izoh qo‘shish</a>
+            <a href="{% url 'update' product.pk %}" class="btn edit-btn">✏️ Tahrirlash</a>
+            <a href="{% url 'delete' product.pk %}" class="btn delete-btn">🗑️ O‘chirish</a>
+        </div>
+    </div>
+
+    <div class="comment-section">
+        <h2>Izohlar:</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <strong>{{ comment.name }}</strong>: {{ comment.comment }}
+                <em>({{ comment.created_at }})</em>
+            </div>
+        {% empty %}
+            <p>Hozircha izohlar yo‘q.</p>
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>

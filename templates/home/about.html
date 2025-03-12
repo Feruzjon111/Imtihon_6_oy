@@ -1,0 +1,115 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biz haqimizda - Kiyimlar Do‘koni</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            color: #333;
+        }
+        .navbar {
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+            transition: color 0.3s ease-in-out;
+        }
+        .nav-link:hover {
+            color: #ffdd57 !important;
+        }
+        .hero {
+            background: url('{% static "images/about-bg.jpg" %}') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .hero h1 {
+            font-size: 46px;
+            font-weight: bold;
+        }
+        .section {
+            padding: 60px 20px;
+        }
+        .team img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">Kiyimlar Do‘koni</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Bog‘lanish</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Biz haqimizda</h1>
+        <p>Sifatli va zamonaviy kiyimlar do‘koni</p>
+    </section>
+
+    <section class="container section">
+        <h2 class="text-center mb-4">Bizning Maqsadimiz</h2>
+        <p class="text-center">Kiyimlar do‘konimiz eng sifatli va zamonaviy mahsulotlarni taqdim etishga intiladi. Biz mijozlarimizga qulay narxlar va yuqori sifatni ta’minlash orqali eng yaxshi xizmat ko‘rsatishni maqsad qilganmiz.</p>
+    </section>
+
+    <section class="container section">
+        <h2 class="text-center mb-4">Bizning Xizmatlar</h2>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <h4>🔹 Zamonaviy kiyimlar</h4>
+                <p>Eng yangi trenddagi kiyimlar va aksessuarlar</p>
+            </div>
+            <div class="col-md-4">
+                <h4>🚀 Tez yetkazib berish</h4>
+                <p>Butun O‘zbekiston bo‘ylab yetkazib berish xizmati</p>
+            </div>
+            <div class="col-md-4">
+                <h4>💳 Qulay to‘lov usullari</h4>
+                <p>Naqd va onlayn to‘lov imkoniyatlari</p>
+            </div>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <p>&copy; 2025 Kiyimlar Do‘koni. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

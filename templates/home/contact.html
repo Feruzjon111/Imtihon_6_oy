@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiyim Do'koni - Aloqa</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff4e50, #fc913a, #f9d423, #1fddff, #2af598);
+            background-size: 400% 400%;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            animation: gradientBG 15s ease infinite;
+        }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navbar */
+        header {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid white;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+        nav ul li a:hover, .active {
+            color: #ffcc00;
+        }
+
+        /* Contact Section */
+        .container {
+            padding: 50px 20px;
+        }
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+        }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 20px;
+            margin: 15px 0;
+        }
+        .contact-item img {
+            width: 32px;
+            height: 32px;
+        }
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .contact-item a:hover {
+            color: black;
+        }
+
+        /* Social Links */
+        .social-links {
+            margin-top: 20px;
+        }
+        .social-links img {
+            width: 50px;
+            height: 50px;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .social-links img:hover {
+            transform: scale(1.2);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <h1>Kiyim Do'koni</h1>
+        <nav>
+            <ul>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Bosh sahifa</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Mahsulotlar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Biz haqimizda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profil</a>
+
+            </ul>
+
+        </nav>
+    </header>
+
+    <!-- Contact Section -->
+    <div class="container">
+        <h2>Biz bilan bog‘laning</h2>
+        <p>Savollaringiz bo‘lsa, biz bilan bog‘laning!</p>
+
+        <div class="contact-card">
+            <h3>Aloqa ma'lumotlari</h3>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/user.png" alt="User">
+                <span>Feruzjon Muzaffarov</span>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/phone.png" alt="Phone">
+                <a href="tel:+998956561212">+998 95 656 12 12</a>
+            </div>
+            <div class="contact-item">
+                <img src="https://img.icons8.com/ios-filled/50/email.png" alt="Email">
+                <a href="mailto:feruzjon608@gmail.com">feruzjon608@gmail.com</a>
+            </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="social-links">
+            <h3>Ijtimoiy tarmoqlar</h3>
+            <a href="https://www.facebook.com/share/p/1LMv3sdkvy/" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/facebook-new.png" alt="Facebook">
+            </a>
+            <a href="https://instagram.com/feruzjon__muzaffarov" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/instagram-new.png" alt="Instagram">
+            </a>
+            <a href="https://t.me/Feruzjon_2004" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/telegram-app.png" alt="Telegram">
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/twitterx.png" alt="Twitter">
+            </a>
+            <a href="https://linkedin.com" target="_blank">
+                <img src="https://img.icons8.com/ios-filled/50/linkedin.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kiyim Do'koni. Barcha huquqlar himoyalangan.</p>
+    </footer>
+</body>
+</html>

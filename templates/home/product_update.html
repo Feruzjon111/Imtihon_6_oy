@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Product</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e1e2f, #2a3b5c);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            font-size: 13px;
+            color: #ffcc00;
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #ffcc00;
+            box-shadow: 0px 0px 6px rgba(255, 204, 0, 0.6);
+        }
+
+        .file-input {
+            display: block;
+            padding: 10px;
+            border: 1px dashed #ffcc00;
+            border-radius: 6px;
+            cursor: pointer;
+            text-align: center;
+            color: #ffcc00;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 12px;
+        }
+
+        .file-input:hover {
+            background: #ffcc00;
+            color: #1e1e2f;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #ffcc00, #ff9900);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 12px;
+            transition: 0.3s;
+            box-shadow: 0px 3px 8px rgba(255, 204, 0, 0.5);
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #ff9900, #ffcc00);
+            transform: scale(1.05);
+            box-shadow: 0px 5px 12px rgba(255, 153, 0, 0.7);
+        }
+
+        .back-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-top: 12px;
+            text-align: center;
+            text-decoration: none;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Update Product</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <button type="submit">Update Phone</button>
+        </form>
+        <a href="{% url 'detail' product.pk %}" class="back-btn">Back to Products</a>
+    </div>
+</body>
+</html>
