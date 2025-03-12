@@ -125,7 +125,12 @@
             {% for kiyim in products %}
                 <div class="col-md-4 mb-4">
                     <div class="card product-card">
-                        <img src="{{ kiyim.image.url }}" class="card-img-top" alt="{{ kiyim.name }}">
+<!--                        <img src="{{ kiyim.image.url }}" class="card-img-top" alt="{{ kiyim.name }}">-->
+                        {% if kiyim.image %}
+                            <img src="{{ kiyim.image.url }}" alt="{{ kiyim.name }}">
+                        {% else %}
+                            <img src="/media/defaults/default.jpg" alt="Standart rasm">
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ kiyim.name }}</h5>
                             <p class="card-text">Narxi: {{ kiyim.price }} so'm</p>

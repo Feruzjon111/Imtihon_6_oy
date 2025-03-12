@@ -45,7 +45,7 @@ class ProductDetail(View):
         context = {'product': product, 'comments': comments}
         return render(request, 'home/product_detail.html', context)
 
-#
+
 class ProductCreate(View):
     def get(self, request):
         form = ProductForm()
@@ -73,8 +73,9 @@ class ProductUpdateView(View):
             form.save()
             return redirect('detail', pk=product.pk)
         return render(request, 'home/product_update.html', {'form': form, 'product': product})
-#
-#
+
+
+
 class PhoneDeleteView(View):
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
@@ -85,7 +86,8 @@ class PhoneDeleteView(View):
         product = get_object_or_404(Product, id=pk)
         product.delete()
         return redirect('products')
-#
+
+
 class CommentView(View):
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
@@ -102,9 +104,4 @@ class CommentView(View):
             comment.save()
             return redirect('detail', pk=pk)
         return render(request, 'home/comment.html', {'form': form, 'product': product})
-#
-# class PhoneListView(View):
-#     def get(self, request):
-#         phones = Phone.objects.all()
-#         context = {'phones': phones}
-#         return render(request, 'home/products.html', context)
+

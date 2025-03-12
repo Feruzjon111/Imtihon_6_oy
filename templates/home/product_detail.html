@@ -155,7 +155,7 @@
             <img src="{{ product.image.url }}" alt="{{ product.name }} {{ product.price }} so'm">
         {% else %}
             {% load static %}
-            <img src="{% static 'defaults/default.jpeg' %}" alt="No Image Available">
+            <img src="{% static 'defaults/default.jpg' %}" alt="No Image Available">
         {% endif %}
         <h1>{{ product.name }} {{ product.price }} so'm</h1>
         <p><strong>Rangi:</strong> {{ product.color }}</p>
