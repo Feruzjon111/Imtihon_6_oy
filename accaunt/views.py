@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from .forms import ProfileUpdateForm
 from .forms import UserCreateForm, LoginForm
-from django.contrib.auth import login, logout, get_user_model, update_session_auth_hash
+from django.contrib.auth import login, logout, get_user_model, update_session_auth_hash, authenticate
 
 User = get_user_model()
 
@@ -31,10 +31,7 @@ def register(request):
 #     else:
 #         form = LoginForm()
 #     return render(request, "registration/login.html", {'form': form})
-from django.contrib.auth import authenticate, login
 
-
-from django.contrib.auth import authenticate, login
 
 def login_user(request):
     if request.method == 'POST':

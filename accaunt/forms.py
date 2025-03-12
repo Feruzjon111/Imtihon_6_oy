@@ -10,11 +10,10 @@ class UserCreateForm(forms.ModelForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'first_name', 'last_name', 'email', 'password', 'confirm_password', 'profile_image']
+        fields = ['username', 'first_name', 'last_name', 'email', 'phone', 'password', 'confirm_password']
         widgets = {
             'password': forms.PasswordInput(),
             'confirm_password': forms.PasswordInput(),
-            'profile_image': forms.FileInput(attrs={'class': 'form-control'}),
         }
 
 
@@ -62,6 +61,27 @@ class ProfileUpdateForm(forms.ModelForm):
             'phone': forms.TextInput(attrs={'class': 'form-control'}),
             'profile_image':forms.FileInput(attrs={'class': 'form-control'}),
         }
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data["password"])
+        if commit:
+            user.save()
+        return user
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        if not any(char.isdigit() for char in password):
+            raise forms.ValidationError('Parolda kamida 1 ta son bo\'lishi kerak!')
+        if not any(char.isalpha() for char in password):
+            raise forms.ValidationError('Parolda kamida 1 ta harf bo\'lishi kerak!')
+        if not any(char.islower() for char in password):
+            raise forms.ValidationError('Parolda kamida 1 ta kichkina harf bo\'lishi kerak!')
+        if not any(char.isupper() for char in password):
+            raise forms.ValidationError('Parolda kamida 1 ta katta harf bo\'lishi kerak!')
+        if len(password) < 8 or (len(password) > 20):
+            raise forms.ValidationError('Parol 8 tadan 20 tagacha simvol bo\'lishi kerak!')
+        return password
 
 
 
