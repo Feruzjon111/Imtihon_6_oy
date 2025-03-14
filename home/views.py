@@ -76,7 +76,7 @@ class ProductUpdateView(View):
 
 
 
-class PhoneDeleteView(View):
+class ProductDeleteView(View):
     def get(self, request, pk):
         product = get_object_or_404(Product, id=pk)
         context = {'product': product}

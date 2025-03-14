@@ -1,7 +1,7 @@
 from django.conf.urls.static import static
 from django.urls import path
 from clothes import settings
-from .views import Home, Products, About, Contact, ProductDetail, ProductCreate, CommentView, ProductUpdateView, PhoneDeleteView
+from .views import Home, Products, About, Contact, ProductDetail, ProductCreate, CommentView, ProductUpdateView, ProductDeleteView
 
 urlpatterns = [
     path('', Home.as_view(), name='home'),
@@ -12,7 +12,7 @@ urlpatterns = [
     path('product/create/', ProductCreate.as_view(), name='create'),
     path('comment/<int:pk>', CommentView.as_view(), name='comment'),
     path('product/<int:pk>/update/', ProductUpdateView.as_view(), name='update'),
-    path('phone/<int:pk>/delete/', PhoneDeleteView.as_view(), name='delete'),
+    path('phone/<int:pk>/delete/', ProductDeleteView.as_view(), name='delete'),
 ]
 
 
